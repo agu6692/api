@@ -1,28 +1,22 @@
 const express= require('express')
 
+const user= require('./user.controller')
+
 const app= express()
 
 const port= 3000
 
-app.get("/",(req,res)=>{
-    res.status(200).send('nueva api')
-})
+app.get("/",user.list)
 
-app.post("/",(req,res)=>{
-    res.status(201).send('creando')
-})
+app.post("/",user.create)
 
-app.put("/:id",(req,res)=>{
-    res.sendStatus(204)
-})
+app.get("/:id",user.get)
 
-app.patch("/:id",(req,res)=>{
-    res.sendStatus(204)
-})
+app.put("/",user.update)
 
-app.delete("/:id",(req,res)=>{
-    res.sendStatus(204)
-})
+app.patch("/:id",user.update)
+
+app.delete("/:id",user.destroy)
 
 app.listen(port,()=>{
     console.log('arrancando la publicacion')
