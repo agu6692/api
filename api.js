@@ -13,12 +13,19 @@ app.use(express.json())
 mongoose.connect('mongodb+srv://agu6692:UhA9XaWIimIrDHex@cluster0.6ujto.mongodb.net/PedidosDatabase?retryWrites=true&w=majority')
 
 
-app.get("/",user.list)
+app.get("/users",user.list)
 app.post("/",user.create)
-app.get("/:id",user.get)
-app.put("/:id",user.update)
-app.patch("/:id",user.update)
-app.delete("/:id",user.destroy)
+app.get("/users/:id",user.get)
+app.put("/users/:id",user.update)
+app.patch("/users/:id",user.update)
+app.delete("/users/:id",user.destroy)
+
+app.use(express.static('app'))
+
+app.get('/',(req,res)=>{
+    console.log(__dirname)
+    res.sendFile(`${__dirname}/index.html`)
+})
 
 app.get('*',(req,res)=>{
     res.status(404).send("esta pagina no existe")
