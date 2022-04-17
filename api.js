@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://agu6692:UhA9XaWIimIrDHex@cluster0.6ujto.mongodb.
 
 
 app.get("/users",user.list)
-app.post("/",user.create)
+app.post("/users",user.create)
 app.get("/users/:id",user.get)
 app.put("/users/:id",user.update)
 app.patch("/users/:id",user.update)
